@@ -1,0 +1,26 @@
+/**
+* LoveCS.java
+*
+* Use a while loop to print many messages declaring your
+* passion for computer science
+*/
+import java.util.Scanner;
+public class Main
+{
+  public static void main(String[] args)
+  {
+    Scanner scan = new Scanner(System.in);
+    int limit = 10;
+    int count = 1;
+    int sum = 0;
+    System.out.println("Enter how many times you would like the statment printed.");
+    limit = scan.nextInt();
+    while (count <= limit){
+      System.out.println(count + " I love Computer Science!!");
+      count++;
+      sum = sum + (count-1);
+    }
+    System.out.print("Printed this message " + (count-1) + " times." );
+    System.out.println(" The sum of the numbers from 1 to " + limit + " is " + sum + ".");
+  }
+}
