@@ -1,44 +1,58 @@
 import java.util.Scanner;
 import java.util.Random;
-public class Main
+/**
+ * this program is an interactive game between the computer and user, it has the user
+ * guess a number the computer randomly generated
+ * 
+ * @author Jonathon Webster
+ * @version September 26, 2017
+ */
+public class Guess
 {
-  public static void main(String[] args)
-  {
-    int numToGuess; //Number the user tries to guess
-    int guess; //The user's guess
-    int numTimes = 1;
-    int numHigh = 0;
-    int numLow = 0;
-    Scanner scan = new Scanner(System.in);
-    Random generator = new Random();
-    //randomly generate the number to guess
-    numToGuess = generator.nextInt(9) + 1;
-    System.out.println(numToGuess);
-    //print message asking user to enter a guess
-    System.out.print("Enter your guess: ");
-    //read in guess
-    guess = scan.nextInt();
-    while (guess != numToGuess ) //keep going as long as the guess is wrong
+    public static void main(String[] args)
     {
-      //print message saying guess is wrong
-      if (guess > numToGuess)
-      {
-        System.out.print("\nToo high, ");
-        numHigh++;
-      }
-      else 
-      {
-        System.out.print("\nToo low, ");
-        numLow++;
-      }
-      //get another guess from the user
-      System.out.print("guess again: ");
-      guess = scan.nextInt();
-      numTimes++;
+        int numToGuess; //Number the user tries to guess
+        int guess; //The user's guess
+        int numTimes = 1;
+        int numHigh = 0;
+        int numLow = 0;
+        Scanner scan = new Scanner(System.in);
+        //randomly generate the number to guess
+        numToGuess =(int)(Math.random() * 10) + 1;
+        //print message asking user to enter a guess
+        System.out.print("\fEnter your guess: ");
+        //read in guess
+        guess = scan.nextInt();
+        while (guess != numToGuess ) //keep going as long as the guess is wrong
+        {
+            //print message saying guess is wrong
+            if (guess > numToGuess)
+            {
+                System.out.print("\nToo high, ");
+                numHigh++;
+            }
+            else 
+            {
+                System.out.print("\nToo low, ");
+                numLow++;
+            }
+            //get another guess from the user
+            System.out.print("guess again: ");
+            guess = scan.nextInt();
+            numTimes++;
+        }
+        //print message saying guess is right
+        if (numTimes != 1 )
+            System.out.println("You got it, after only " + numTimes + " guesses!!");
+        else 
+            System.out.println("You got it, after only " + numTimes + " guess!!");
+        if (numHigh != 1)    
+            System.out.println(numHigh + " guesses were too high.");
+        else
+            System.out.println(numHigh + " guess was too high.");
+        if (numLow != 1)
+            System.out.println(numLow + " guesses were too low.");
+        else
+            System.out.println(numLow + " guesses were too low.");	
     }
-    //print message saying guess is right
-    System.out.println("You got it, after only " + numTimes + " guesses!!");
-    System.out.println(numHigh + " guesses were too high.");
-    System.out.println(numLow + " guesses were too low.");
-  }
 }
